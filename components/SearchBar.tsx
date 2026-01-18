@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 
 interface Props {
@@ -12,9 +11,10 @@ export default function SearchBar({ onSearch }: Props) {
   return (
     <div>
       <input
-        placeholder="Enter city name"
+        placeholder="Search city..."
         value={city}
         onChange={(e) => setCity(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && onSearch(city)}
       />
       <button onClick={() => onSearch(city)}>Search</button>
     </div>

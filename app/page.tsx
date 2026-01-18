@@ -1,22 +1,41 @@
 "use client";
 
+import { useEffect } from "react";
+import { useWeather } from "../hooks/useWeather";
 import SearchBar from "../components/SearchBar";
 import WeatherCard from "../components/WeatherCard";
-import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
-import { useWeather } from "../hooks/useWeather";
 
 export default function Home() {
   const { weather, loading, error, fetchWeather } = useWeather();
 
+  // 🌦️ Change background based on weather
+  useEffect(() => {
+    if (!weather) return;
+
+    const weatherType = weather.weather[0].main.toLowerCase();
+
+    document.body.className = ""; // reset
+    document.body.classList.add(`weather-${weatherType}`);
+  }, [weather]);
+
   return (
-    <main style={{ padding: "2rem", maxWidth: "600px", margin: "auto" }}>
-      <h1>Ayush Climate X 🌦️</h1>
+    <main>
+      <h1 className="app-title">🌦️Climate X - Powered By Ayush</h1>
 
-      <SearchBar onSearch={fetchWeather} />
+      <div className="search-container">
+        <SearchBar onSearch={fetchWeather} />
+        {weather && (
+          <button title="Refresh weather" onClick={() => fetchWeather(weather.name)}>
+            🔄
+          </button>
+        )}
+      </div>
 
-      {loading && <Loader />}
+      {loading && <p className="loading">Fetching weather data…</p>}
+
       {error && <ErrorMessage message={error} />}
+
       {weather && <WeatherCard data={weather} />}
     </main>
   );
