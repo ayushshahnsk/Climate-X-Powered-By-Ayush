@@ -248,3 +248,149 @@ body.weather-fog {
   background:
     linear-gradient(135deg, #fdfbfb, #ebedee);
 }
+
+/* ===== FULL RESPONSIVE SYSTEM ===== */
+
+/* 📱 Mobile Phones */
+@media (max-width: 480px) {
+
+  main {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .app-title {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  /* SEARCH LAYOUT FIX */
+  .search-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+
+  /* SearchBar wrapper */
+  .search-bar {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+  }
+
+  /* Input should take MOST space */
+  .search-bar input {
+    flex: 1;                /* 🔥 MAIN FIX */
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  /* Search button smaller */
+  .search-bar button {
+    padding: 10px 14px;    /* 🔥 REDUCE SIZE */
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  /* Refresh button full width but small */
+  .search-container > button {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  /* WEATHER CARD */
+  .weather-card {
+    padding: 22px 18px;
+    border-radius: 22px;
+  }
+
+  /* TEMP SCALE DOWN */
+  .temp {
+    font-size: 60px;
+    margin: 14px 0;
+  }
+
+  /* MIN/MAX */
+  .minmax {
+    justify-content: space-between;
+    font-size: 13px;
+  }
+
+  /* GRID → 2 PER ROW */
+  .weather-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .stat {
+    padding: 12px;
+  }
+
+  .stat strong {
+    font-size: 15px;
+  }
+
+  /* SUNRISE / SUNSET STACK */
+  .sun {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  /* ICON SCALE */
+  .weather-icon {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* 📲 Tablets */
+@media (max-width: 768px) {
+
+  main {
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .app-title {
+    font-size: 1.8rem;
+  }
+
+  .search-container {
+    justify-content: center;
+  }
+
+  .search-bar {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .weather-card {
+    max-width: 100%;
+    padding: 32px 28px;
+  }
+
+  .temp {
+    font-size: 72px;
+  }
+
+  .weather-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 💻 Small Laptops */
+@media (max-width: 1024px) {
+
+  main {
+    max-width: 100%;
+  }
+
+  .weather-card {
+    max-width: 900px;
+  }
+}
